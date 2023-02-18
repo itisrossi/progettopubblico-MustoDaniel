@@ -1,0 +1,61 @@
+9, 7, 2, 4, 12
+
+Selection sort:
+trova il minimo
+mettilo in prima posizione 
+ripeti su quello che resta
+
+function selectionSort(v, inizio, fine) {
+	let posMinimo = 0;
+	if(inizio === fine){
+	   return;
+	}
+	else {
+	   posMinimo = posizioneMinimo(v, inizio, fine);
+	   scambia(v, inizio, posMinimo);
+	   selectionSort(v, inizio++, fine);
+	}
+}
+
+function posizioneMinimo() {
+	let minimo = v[inizio];
+	let pos = inizio;
+	if (inizio === fine)
+   	   return inizio;
+	else {
+   	   let posMinimoRestante = posizioneMinimo(v, inizio++, fine);
+   	   if (v[inizio] < v[posMinimoRestante])
+      	      return inizio;
+   	   else
+      	      return posMinimoRestante;
+	}
+}
+return pos;
+
+function scambia(v, da, a) {
+	let tmp = v[a];
+	v[da] = v[a];
+	v[a] = tmp;
+}
+
+DA FARE: 
+QuickSort(v, inizio, fine)
+
+devo ordinare un vettore:
+prendo un qualunque elemento e lo chiamo "pivot",
+chiamo una procedura che prende tutti gli elementi più piccoli del pivot e li mette a sinistra, mentre tutti quelli più grandi del pivot li mette a destra (tutti disordinati),
+a questo punto bisogna ordinare la metà che sta a destra e quella che sta a sinistra
+
+QuickSort(v, inizio, fine) {
+	if(inizio == fine)
+		return;
+	else {
+		let pivot = v[inizio];
+		partition(v, pivot, inizio, fine); //la funzione che deve ordinare la due parti ritornandomi la posizione del pivot
+		QuickSort(v, inizio, (posPivot -1)); 
+		QuickSort(v, posPivot++, fine);
+	}
+}
+
+
+// PER CASA FARE LA FUNZIONE "PARTITION"

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <p>Risultato::::</p>
+    <p id="ris"></p>
+    <script>
+        const v = [2,43,8,1,2547,24,75,7];
+        let inizio = 0;
+        let fine = (v.lenght - 1);
+    function selectionSort(v, inizio, fine) {
+	let posMinimo = 0;
+	if(inizio === fine){
+	   return "gragnigni";
+	}
+	else {
+	   posMinimo = posizioneMinimo(v, inizio, fine);
+	   scambia(v, inizio, posMinimo);
+	   selectionSort(v, inizio++, fine);
+	}
+}
+
+function posizioneMinimo(v, inizio, fine) {
+	let minimo = v[inizio];
+	let pos = inizio;
+	if (inizio === fine) {
+   	   return inizio;
+    }
+	else {
+   	   let posMinimoRestante = posizioneMinimo(v, inizio++, fine);
+   	   if (v[inizio] < v[posMinimoRestante])
+      	      return inizio;
+   	   else
+      	      return posMinimoRestante;
+	}
+    return pos;
+}
+
+
+function scambia(v, da, a) {
+	let tmp = v[a];
+	v[da] = v[a];
+	v[a] = tmp;
+}
+
+    document.getElementById("ris").innerHTML = selectionSort(v, inizio, fine)
+    </script>
+</body>
+</html>
